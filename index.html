@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive design - doc page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+                                                          <!--navbar-->
+    <nav id="navbar" class="navbar">
+        <header id="nav-header">Responsive design</header>
+        <ul id="nav-list" class="nav-list">
+            <li>
+                <a class="nav-link" href="#Historic_website_layouts">Historic website layouts</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Flexible_layout_before_responsive_design">Flexible layout before responsive design</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Responsive_design">Responsive design</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Media_Queries">Media Queries</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Flexible_grids">Flexible grids</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Modern_layout_technologies">Modern layout technologies</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Responsive_images">Responsive images</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Responsive_typography">Responsive typography</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#The_viewport_meta_tag">The viewport meta tag</a>
+            </li>
+        </ul>
+    </nav>
+                                                 <!--Documentation-->
+    <main id="main-doc">
+        <section class="main-section" id="Historic_website_layouts">
+            <header>Historic website layouts</header>
+            <article>
+                <p>HTML is fundamentally responsive. If you create a web page containing text and resize the browser window, or display the page on a device with a smaller screen, then the browser will automatically reflow the text to fit the window.<br>
+                   This is called a liquid layout.<br>
+                   The problem with this layout, though, is that the site would look squashed on smaller screens (as seen below) and have unreadably long line lengths on larger ones.
+                </p>
+                <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design/mdn-rwd-liquid.png" alt="liquid layout">
+                <p>
+                    The alternative is to create a fixed width layout, which sets elements to a fixed size in pixels.<br>
+                    The problem with this approach is that you will get a horizontal scrollbar on screens smaller than the site width (as seen below), and lots of white space at the edges of the design on larger screens. 
+                </p>
+                <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design/mdn-rwd-fixed.png" alt="fixed layout">
+            </article>
+        </section>
+
+        <section class="main-section" id="Flexible_layout_before_responsive_design">
+            <header>Flexible layout before responsive design</header>
+            <article>
+               <p>
+                A number of approaches were developed to try to solve the downsides of the liquid or fixed-width methods of building websites. In 2004 Cameron Adams wrote a post entitled <a href="https://www.themaninblue.com/writing/perspective/2004/09/21/" target="_self" rel="noopener noreferrer">Resolution dependent layout</a>, describing a method of creating a design that could adapt to different screen resolutions. This approach required JavaScript to detect the screen resolution and load the correct CSS.
+               </p> 
+            </article>
+        </section>
+
+        <section class="main-section" id="Responsive_design">
+            <header>Responsive design</header>
+            <article>
+                <p>
+                    The term responsive design was <a href="https://alistapart.com/article/responsive-web-design/" target="_self" rel="noopener noreferrer">coined by Ethan Marcotte</a> in 2010 and described the use of three techniques in combination.
+                </p>
+                <ul>
+                    <li>
+                        The first was the idea of fluid grids, something which was already being explored by Gillenwater, and can be read up on in Marcotte's article, <a href="https://alistapart.com/article/fluidgrids/" target="_self" rel="noopener noreferrer">Fluid Grids</a> (published in 2009 on A List Apart).
+                    </li>
+                    <li>
+                        The second technique was the idea of <a href="https://unstoppablerobotninja.com/entry/fluid-images/" target="_self" rel="noopener noreferrer">fluid images.</a> Using a very simple technique of setting the <mark>max-width</mark> property to <mark>100%</mark>, images would scale down smaller if their containing column became narrower than the image's intrinsic size, but never grow larger. This enables an image to scale down to fit in a flexibly-sized column, rather than overflow it, but not grow larger and become pixelated if the column becomes wider than the image.
+                    </li>
+                    <li>
+                        The third key component was the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries" target="_self" rel="noopener noreferrer">media query.</a> Media Queries enable the type of layout switch that Cameron Adams had previously explored using JavaScript, using only CSS. Rather than having one layout for all screen sizes, the layout could be changed. Sidebars could be repositioned for the smaller screen, or alternate navigation could be displayed.
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="main-section" id="Media_Queries">
+            <header>Media Queries</header>
+            <article>
+                <p>
+                    Responsive design was only able to emerge due to the media query. The Media Queries Level 3 specification became a Candidate Recommendation in 2009, meaning that it was deemed ready for implementation in browsers. Media Queries allow us to run a series of tests (e.g. whether the user's screen is greater than a certain width, or a certain resolution) and apply CSS selectively to style the page appropriately for the user's needs.<br>
+                </p>
+                <p>
+                    For example, the following media query tests to see if the current web page is being displayed as screen media (therefore not a printed document) and the viewport is at least 800 pixels wide. The CSS for the <mark>.container</mark> selector will only be applied if these two things are true.
+                </p>
+                <pre><code>
+                @media screen and (min-width: 800px) {
+                    .container {
+                      margin: 1em 2em;
+                    }
+                  }
+                </code></pre>
+                <p>
+                   You can add multiple media queries within a stylesheet, tweaking your whole layout or parts of it to best suit the various screen sizes. The points at which a media query is introduced, and the layout changed, are known as breakpoints. <br>
+                   Find out more in the MDN documentation for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries" target="_self" rel="noopener noreferrer">Media Queries.</a>
+                </p>
+            </article>
+        </section>
+
+        <section class="main-section" id="Flexible_grids">
+            <header>Flexible grids</header>
+            <article>
+                <p>
+                    Responsive sites don't just change their layout between breakpoints, they are built on flexible grids. A flexible grid means that you don't need to target every possible device size that there is, and build a pixel perfect layout for it. That approach would be impossible given the vast number of differently-sized devices that exist, and the fact that on desktop at least, people do not always have their browser window maximized. <br> <br>
+                    By using a flexible grid, you only need to add in a breakpoint and change the design at the point where the content starts to look bad. For example, if the line lengths become unreadably long as the screen size increases, or a box becomes squashed with two words on each line as it narrows. <br> <br>
+                    In the early days of responsive design, our only option for performing layout was to use <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats" target="_self" rel="noopener noreferrer">floats.</a> Flexible floated layouts were achieved by giving each element a percentage width, and ensuring that across the layout the totals were not more than 100%. In his original piece on fluid grids, Marcotte detailed a formula for taking a layout designed using pixels and converting it into percentages.
+                </p>
+                <code>
+                target / context = result
+                </code>
+                <p>
+                    For example, if our target column size is 60 pixels, and the context (or container) it is in is 980 pixels, we divide 60 by 980 to get a value we can use in our CSS, after moving the decimal point two places to the right.
+                </p>
+                <pre><code>
+                .col {
+                    width: 6.12%; /* 60 / 980 = 0.0612 */
+                  }
+                </code></pre>
+                <p>
+                    This approach will be found in many places across the web today, and it is documented here in the layout section of our <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Legacy_Layout_Methods" target="_self" rel="noopener noreferrer">Legacy layout methods</a> article. It is likely that you will come across websites using this approach in your work, so it is worth understanding it, even though you would not build a modern site using a float-based flexible grid. 
+                </p>
+                <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design/mdn-rwd-mobile.png" alt="example of responsive design">
+            </article>
+        </section>
+
+        <section class="main-section" id="Modern_layout_technologies">
+            <header>Modern layout technologies</header>
+            <article>
+                <p>
+                    Modern layout methods such as <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout" target="_self" rel="noopener noreferrer">Multiple-column layout</a>,<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox" target="_self" rel="noopener noreferrer">Flexbox</a>, and <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids" target="_self" rel="noopener noreferrer">Grid</a> are responsive by default. They all assume that you are trying to create a flexible grid and give you easier ways to do so. <br> <br>
+                </p>
+                <h4>Multicol</h4>
+                <p>
+                    The oldest of these layout methods is multicol — when you specify a <mark>column-count</mark>, this indicates how many columns you want your content to be split into. The browser then works out the size of these, a size that will change according to the screen size.
+                </p>
+                <pre><code>
+                .container {
+                    column-count: 3;
+                  }
+                </code></pre>
+                <p>
+                    If you instead specify a column-width, you are specifying a minimum width. The browser will create as many columns of that width as will comfortably fit into the container, then share out the remaining space between all the columns. Therefore the number of columns will change according to how much space there is.
+                </p>
+                <pre><code>
+                .container {
+                    column-width: 10em;
+                  }
+                </code></pre>
+                <h4>Flexbox</h4>
+                <p>
+                    In Flexbox, flex items will shrink and distribute space between the items according to the space in their container, as their initial behavior. By changing the values for <mark>flex-grow</mark> and <mark>flex-shrink</mark> you can indicate how you want the items to behave when they encounter more or less space around them.
+                </p>
+                <pre><code>
+                .container {
+                    display: flex;
+                  }
+                </code></pre>
+                <h4>CSS grid</h4>
+                <p>
+                    In CSS Grid Layout the <mark>fr</mark> unit allows the distribution of available space across grid tracks. The next example creates a grid container with three tracks sized at <mark>1fr</mark>. This will create three column tracks, each taking one part of the available space in the container. You can find out more about this approach to create a grid in the Learn Layout Grids topic, under <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit" target="_self" rel="noopener noreferrer">Flexible grids with the fr unit.</a>
+                </p>
+                <pre><code>
+                .container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                  } 
+                </code></pre>
+            </article>
+        </section>
+        <section class="main-section" id="Responsive_images">
+            <header>Responsive images</header>
+            <article>
+                <p>
+                    The simplest approach to responsive images was as described in Marcotte's early articles on responsive design. Basically, you would take an image that was at the largest size that might be needed, and scale it down. This is still an approach used today, and in most stylesheets, you will find the following CSS somewhere:
+                </p>
+                <pre><code>
+                img {
+                    max-width: 100%;
+                  }
+                </code></pre>
+                <p>
+                    There are obvious downsides to this approach. The image might be displayed a lot smaller than its intrinsic size, which is a waste of bandwidth — a mobile user may be downloading an image several times the size of what they actually see in the browser window. In addition, you may not want the same image aspect ratio on mobile as on desktop. For example, it might be nice to have a square image for mobile, but show the same scene as a landscape image on desktop. Or, acknowledging the smaller size of an image on mobile you might want to show a different image altogether, one which is more easily understood at a small screen size. These things can't be achieved by scaling down an image. <br><br>
+                    You can find a detailed <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" target="_self" rel="noopener noreferrer">guide to Responsive Images in the Learn HTML section</a> here on MDN.
+                </p>
+            </article>
+        </section>
+        <section class="main-section" id="Responsive_typography">
+            <header>Responsive typography</header>
+            <article>
+                <p>
+                    An element of responsive design not covered in earlier work was the idea of responsive typography. Essentially, this describes changing font sizes within media queries to reflect lesser or greater amounts of screen real estate.<br><br>
+                    In this example, we want to set our level 1 heading to be <mark>4rem</mark>, meaning it will be four times our base font size. That's a really large heading! We only want this jumbo heading on larger screen sizes, therefore we first create a smaller heading then use media queries to overwrite it with the larger size if we know that the user has a screen size of at least <mark>1200px</mark>.
+                </p>
+                <pre><code>
+                html {
+                    font-size: 1em;
+                  }
+                  
+                  h1 {
+                    font-size: 2rem;
+                  }
+                  
+                  @media (min-width: 1200px) {
+                    h1 {
+                      font-size: 4rem;
+                    }
+                  }
+                </code></pre>
+                <p>
+                    We have edited our responsive grid example above to also include responsive type using the method outlined. You can see how the heading switches sizes as the layout goes to the two column version. <br><br>
+                    On mobile the heading is smaller:
+                </p>
+                <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design/mdn-rwd-font-mobile.png" alt="responsive mobile">
+
+                <h4>Using viewport units for responsive typography</h4>
+                <p>
+                    An interesting approach is to use the viewport unit <mark>vw</mark> to enable responsive typography. <mark>1vw</mark> is equal to one percent of the viewport width, meaning that if you set your font size using <mark>vw</mark>, it will always relate to the size of the viewport.
+                </p>
+                <pre><code>
+                h1  {
+                     font-size: 6vw;
+                   }   
+                </code></pre>
+                <p>
+                    The problem with doing the above is that the user loses the ability to zoom any text set using the vw unit, as that text is always related to the size of the viewport. <br>
+                    <b>Therefore you should never set text using viewport units alone.</b> <br> <br>
+                    There is a solution, and it involves using <mark>calc()</mark>. If you add the <mark>vw</mark> unit to a value set using a fixed size such as <mark>em</mark> or <mark>rem</mark> then the text will still be zoomable. Essentially, the <mark>vw</mark> unit adds on top of that zoomed value:
+                </p>
+                <pre><code>
+                h1 {
+                    font-size: calc(1.5rem + 3vw);
+                  }  
+                </code></pre>
+            </article>
+        </section>
+
+        <section class="main-section" id="The_viewport_meta_tag">
+            <header>The viewport meta tag</header>
+            <article>
+                <p>
+                    If you look at the HTML source of a responsive page, you will usually see the following <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" target="_self" rel="noopener noreferrer">&lsaquo;meta&rsaquo;</a>tag in the <mark>&lsaquo;head&rsaquo;</mark> of the document.
+                </p>
+                <pre>
+                    <code>&lsaquo;meta name="viewport" content="width=device-width,initial-scale=1"/&rsaquo;</code>
+                </pre>
+                <p>
+                    This meta tag tells mobile browsers that they should set the width of the viewport to the device width, and scale the document to 100% of its intended size, which shows the document at the mobile-optimized size that you intended. <br>
+                </p>
+                <p>This meta tag exists because when the original iPhone launched and people started to view websites on a small phone screen, most sites were not mobile optimized. The mobile browser would, therefore, set the viewport width to 980 pixels, render the page at that width, and show the result as a zoomed-out version of the desktop layout. Other mobile browsers (e.g. on Google Android) did the same thing. Users could zoom in and pan around the website to view the bits they were interested in, but it looked bad. You will still see this today if you have the misfortune to come across a site that does not have a responsive design. <br><br>
+                   <b>So you should always include the above line of HTML in the head of your documents.</b> 
+                </p>
+                <ul>
+                    <li><mark>initial-scale</mark>: Sets the initial zoom of the page, which we set to 1.</li>
+                    <li><mark>height</mark>:Sets a specific height for the viewport.</li>
+                    <li><mark>minimum-scale</mark>: Sets the minimum zoom level.</li>
+                    <li><mark>maximum-scale</mark>:Sets the maximum zoom level.</li>
+                    <li><mark>user-scalable</mark>:Prevents zooming if set to no.</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
